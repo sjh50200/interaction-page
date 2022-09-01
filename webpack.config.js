@@ -1,16 +1,25 @@
+const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const port = process.env.PORT || 3000;
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: path.resolve(__dirname, './src/index.ts'),
     output: {
         filename: 'bundle.[hash].js'
+    },
+    resolve: {
+        extensions: [".tsx", ".ts", ".jsx", ".js"],
     },
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/
+            },
+            {
+                test: /\.(ts|js)x?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
