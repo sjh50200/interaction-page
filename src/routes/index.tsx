@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import NotFound from '@/pages/NotFound';
 import MainPage from '@/pages/Main';
 import SecondMockup from '@/pages/Second';
@@ -7,14 +7,14 @@ import SecondMockup from '@/pages/Second';
 const Router = () => {
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
-          <Route path="*" element={<NotFound />} />
           {/* <Route path="/" element={<Navigate to="/main" />} /> */}
           <Route path="/" element={<MainPage />} />
           <Route path="/second" element={<SecondMockup />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </>
   );
 };

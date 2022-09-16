@@ -3,10 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const port = process.env.PORT || 3000;
 
 module.exports = {
-  mode: 'development',
+  // mode: 'development',
   entry: path.resolve(__dirname, './src/index.ts'),
   output: {
-    filename: 'bundle.[hash].js',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
   resolve: {
     alias: {
