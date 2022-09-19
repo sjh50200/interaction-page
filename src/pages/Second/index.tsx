@@ -24,11 +24,11 @@ const SecondMockup = () => {
   //   height는 언제 나타날지를
   return (
     <S.Wrapper>
-      <S.Background1 position={scrollY}>
+      <S.Background1 position={scrollY} deviceHeight={window.innerHeight}>
         {firstItem && (
           <S.Text
             position={scrollY}
-            height={window.innerHeight * 0.4}
+            height={window.innerHeight}
             deviceHeight={window.innerHeight}
             className="first-text"
           >
@@ -40,7 +40,7 @@ const SecondMockup = () => {
             <S.Text
               className="second-text"
               position={scrollY}
-              height={window.innerHeight * 0.4}
+              height={window.innerHeight * 2}
               deviceHeight={window.innerHeight}
             >
               My name is
@@ -49,7 +49,7 @@ const SecondMockup = () => {
               <S.Text
                 className="third-text"
                 position={scrollY}
-                height={window.innerHeight}
+                height={window.innerHeight * 3}
                 deviceHeight={window.innerHeight}
               >
                 cobe

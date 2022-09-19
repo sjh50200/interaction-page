@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 
 export const Background1 = styled.div<{
   position: number;
+  deviceHeight: number;
 }>`
   position: fixed;
   display: flex;
@@ -17,11 +18,24 @@ export const Background1 = styled.div<{
   height: 100vh;
   width: 100vw;
   font-size: 3rem;
+  ${(props) =>
+    props.position < 6 * props.deviceHeight &&
+    css`
+      background-image: url(${background});
+      background-repeat: no-repeat;
+      background-size: cover;
+      opacity: ${(5 * props.deviceHeight - props.position) / 500};
+    `}/* background-color: green; */
+`;
+/* ${(props) =>
+props.position >= 2.2 * props.deviceHeight &&
+props.position < 2.5 * props.deviceHeight &&
+css`
   background-image: url(${background});
   background-repeat: no-repeat;
-  background-size: cover;
-  /* background-color: green; */
-`;
+  background-size: ${2.5 * props.deviceHeight - props.position}%;
+`} */
+/* transform: rotateX(${2.5 * props.deviceHeight - props.position} / 100); */
 /* animation: ${fadeIn} 2s; */
 
 export const Text = styled.span<{
@@ -37,14 +51,14 @@ export const Text = styled.span<{
       case 'first-text':
         return (props.height - props.position) / 500;
       case 'second-text': {
-        if (props.position < 2.2 * props.deviceHeight)
+        if (props.position < 3 * props.deviceHeight)
           return (props.position - props.height) / 500;
-        else return (2.5 * props.deviceHeight - props.position) / 500;
+        else return (5 * props.deviceHeight - props.position) / 500;
       }
       case 'third-text': {
-        if (props.position < 2.2 * props.deviceHeight)
+        if (props.position < 4 * props.deviceHeight)
           return (props.position - props.height) / 500;
-        else return (2.5 * props.deviceHeight - props.position) / 500;
+        else return (5 * props.deviceHeight - props.position) / 500;
       }
       default:
         return 0;
