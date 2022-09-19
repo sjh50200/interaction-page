@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { fadeIn } from '@/style/keyFrames';
+import background from '@/images/snow.gif';
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -15,9 +15,12 @@ export const Background1 = styled.div<{
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   font-size: 3rem;
-  opacity: 1;
+  background-image: url(${background});
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-color: green; */
 `;
 /* animation: ${fadeIn} 2s; */
 
@@ -25,19 +28,43 @@ export const Text = styled.span<{
   className: string;
   position: number;
   height: number;
+  deviceHeight: number;
 }>`
   text-align: center;
+  color: white;
   opacity: ${(props) => {
     switch (props.className) {
       case 'first-text':
         return (props.height - props.position) / 500;
       case 'second-text': {
-        if (props.position < 2000) return (props.position - props.height) / 500;
-        else return (2000 - props.position) / 500;
+        if (props.position < 2.2 * props.deviceHeight)
+          return (props.position - props.height) / 500;
+        else return (2.5 * props.deviceHeight - props.position) / 500;
       }
       case 'third-text': {
-        if (props.position < 2000) return (props.position - props.height) / 500;
-        else return (2000 - props.position) / 500;
+        if (props.position < 2.2 * props.deviceHeight)
+          return (props.position - props.height) / 500;
+        else return (2.5 * props.deviceHeight - props.position) / 500;
+      }
+      default:
+        return 0;
+    }
+  }};
+  margin-top: ${(props) => {
+    if (props.height < props.position) {
+      switch (props.className) {
+        case 'second-text': {
+          return 50 - (props.position - props.height) / 20 > 0
+            ? 50 - (props.position - props.height) / 20
+            : 0;
+        }
+        case 'third-text': {
+          return 50 - (props.position - props.height) / 20 > 0
+            ? 50 - (props.position - props.height) / 20
+            : 0;
+        }
+        default:
+          return 0;
       }
     }
   }};

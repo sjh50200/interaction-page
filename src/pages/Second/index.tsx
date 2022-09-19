@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import * as S from './style';
 
 const SecondMockup = () => {
-  const [position, setPosition] = useState<number>(0);
   const [firstItem, setFirstItem] = useState<boolean>(true);
   const [secondItem, setSecondItem] = useState<boolean>(false);
   const [thirdItem, setThirdItem] = useState<boolean>(false);
@@ -11,7 +10,13 @@ const SecondMockup = () => {
   const { scrollY } = useYScroll();
 
   useEffect(() => {
-    console.log(scrollY);
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    // console.log(scrollY);
+    // console.log(window.innerHeight * 0.4);
+    console.log(2.5 * window.innerHeight - scrollY);
     if (scrollY >= 400) setSecondItem(true);
     if (scrollY >= 700) setThirdItem(true);
   }, [scrollY]);
@@ -24,6 +29,7 @@ const SecondMockup = () => {
           <S.Text
             position={scrollY}
             height={window.innerHeight * 0.4}
+            deviceHeight={window.innerHeight}
             className="first-text"
           >
             Hello
@@ -35,6 +41,7 @@ const SecondMockup = () => {
               className="second-text"
               position={scrollY}
               height={window.innerHeight * 0.4}
+              deviceHeight={window.innerHeight}
             >
               My name is
             </S.Text>
@@ -43,6 +50,7 @@ const SecondMockup = () => {
                 className="third-text"
                 position={scrollY}
                 height={window.innerHeight}
+                deviceHeight={window.innerHeight}
               >
                 cobe
               </S.Text>
