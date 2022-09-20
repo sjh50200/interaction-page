@@ -13,35 +13,28 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (scrollY >= 0 && scrollY < window.innerHeight * 0.7) {
+    if (scrollY > window.innerHeight * 5 && scrollY < window.innerHeight * 6) {
       setFirstItem(true);
       setSecondItem(false);
       setThirdItem(false);
     } else if (
-      scrollY >= window.innerHeight * 0.7 &&
-      scrollY < window.innerHeight * 1.4
+      scrollY >= window.innerHeight * 6 &&
+      scrollY < window.innerHeight * 7
     ) {
       setFirstItem(false);
       setSecondItem(true);
       setThirdItem(false);
-    } else if (
-      scrollY >= window.innerHeight * 1.4 &&
-      scrollY < window.innerHeight * 2.1
-    ) {
-      setFirstItem(false);
-      setSecondItem(false);
-      setThirdItem(true);
     } else {
       setFirstItem(false);
       setSecondItem(false);
-      setThirdItem(false);
+      setThirdItem(true);
     }
   }, [scrollY]);
 
   return (
     <S.Wrapper>
       <NavBar />
-      <S.Container sticky={firstItem || secondItem || thirdItem}>
+      <S.Container deviceHeight={window.innerHeight} position={scrollY}>
         {firstItem && (
           <S.Text>
             <p>HELLO</p>

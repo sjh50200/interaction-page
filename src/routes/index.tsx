@@ -10,8 +10,7 @@ const Router = () => {
       <HashRouter>
         <Routes>
           {/* <Route path="/" element={<Navigate to="/main" />} /> */}
-          <Route path="/" element={<MainPage />} />
-          <Route path="/second" element={<SecondMockup />} />
+          <Route path="/" element={<SecondMockup />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </HashRouter>

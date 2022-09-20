@@ -25,7 +25,7 @@ export const Background1 = styled.div<{
       background-repeat: no-repeat;
       background-size: cover;
       opacity: ${(5 * props.deviceHeight - props.position) / 500};
-    `}/* background-color: green; */
+    `}
 `;
 /* ${(props) =>
 props.position >= 2.2 * props.deviceHeight &&
