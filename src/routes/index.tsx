@@ -8,14 +8,14 @@ import FakeUrl from '@/pages/FakeUrl';
 const Router = () => {
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           {/* <Route path="/" element={<Navigate to="/main" />} /> */}
           <Route path="/" element={<SecondMockup />} />
           <Route path="/fake-url" element={<FakeUrl />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </>
   );
 };
