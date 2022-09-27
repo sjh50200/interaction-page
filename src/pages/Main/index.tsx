@@ -56,7 +56,7 @@ const MainPage = () => {
             <p>with animated</p>
             <CustomButton
               className="first-mock"
-              onClick={() => navigate('/second')}
+              onClick={() => navigate('/fake-url')}
             >
               Next
             </CustomButton>
